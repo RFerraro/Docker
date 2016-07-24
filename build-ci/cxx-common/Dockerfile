@@ -1,5 +1,4 @@
-# rferraro/build-essentials/cxx-common:ubuntu-16.04
-# Version 1
+# rferraro/cxx-common
 
 FROM ubuntu:16.04
 

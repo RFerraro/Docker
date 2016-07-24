@@ -1,6 +1,6 @@
-# rferraro/build-essentials/cxx-gcc-54-conan:0.9.4-custom
+#rferraro/cxx-gcc-54-conan
 
-FROM rferraro/build-essentials/cxx-gcc-54:ubuntu-16.04
+FROM rferraro/cxx-gcc-54
 
 ADD conan /usr/bin
 WORKDIR /usr/src/
