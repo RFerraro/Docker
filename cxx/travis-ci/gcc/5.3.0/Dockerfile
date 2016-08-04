@@ -1,0 +1,12 @@
+#rferraro/cxx-travis-ci:gcc-5.3.0
+
+FROM rferraro/cxx-gcc:5.3.0
+
+RUN pip install \
+        conan==0.10.1 \
+    && conan user \
+    && conan --version \
+    && sed -i.bak '/^compiler.libcxx=/s/libstdc++/libstdc++11/' ~/.conan/conan.conf \
+    && rm ~/.conan/conan.conf.bak
+    
+
