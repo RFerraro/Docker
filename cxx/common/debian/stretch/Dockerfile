@@ -3,14 +3,16 @@
 FROM debian:stretch
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-		wget \
         ca-certificates \
         python \
         make \
         cmake \
+        jq \
+        curl \
+        git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && wget -O - https://bootstrap.pypa.io/get-pip.py | python - \
+    && curl -s https://bootstrap.pypa.io/get-pip.py 2>/dev/null | python - \
     && pip install \
         setuptools \
         cpp-coveralls
