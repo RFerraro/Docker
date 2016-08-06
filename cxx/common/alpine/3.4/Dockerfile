@@ -11,6 +11,7 @@ RUN apk add --no-cache \
         jq \
         curl \
         git \
+        coreutils \
     && curl -s https://bootstrap.pypa.io/get-pip.py 2>/dev/null | python - \
     && pip install \
         setuptools \
