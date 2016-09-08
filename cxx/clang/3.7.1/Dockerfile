@@ -6,10 +6,10 @@ ENV CC clang
 ENV CXX clang++
 
 # get a specific snapshot of the debian archive, so docker builds are reproducable
-RUN    deb http://snapshot.debian.org/archive/debian/20160806T044947Z/ stretch main \
-    && deb-src http://snapshot.debian.org/archive/debian/20160806T044947Z/ stretch main \
-    && deb http://snapshot.debian.org/archive/debian-security/20160806T023609Z/ stretch/updates main \
-    && deb-src http://snapshot.debian.org/archive/debian-security/20160806T023609Z/ stretch/updates main
+RUN    echo "deb http://snapshot.debian.org/archive/debian/20160806T044947Z/ stretch main" >> /etc/apt/sources.list \
+    && echo "deb-src http://snapshot.debian.org/archive/debian/20160806T044947Z/ stretch main" >> /etc/apt/sources.list \
+    && echo "deb http://snapshot.debian.org/archive/debian-security/20160806T023609Z/ stretch/updates main" >> /etc/apt/sources.list \
+    && echo "deb-src http://snapshot.debian.org/archive/debian-security/20160806T023609Z/ stretch/updates main" >> /etc/apt/sources.list
 
 RUN apt-get -o Acquire::Check-Valid-Until=false update && apt-get install -y --no-install-recommends \
         llvm-3.7=1:3.7.1-2 \
