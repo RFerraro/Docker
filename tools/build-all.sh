@@ -46,12 +46,17 @@ if [ $opt_delete_orphan -eq 1 ]; then
 fi
 
 
-docker build $build_options -t rferraro/cxx-common:debian-stretch cxx/common/debian/stretch
-docker build $build_options -t rferraro/cxx-common:alpine-3.4 cxx/common/alpine/3.4
-docker build $build_options -t rferraro/cxx-gcc:5.3.0 cxx/gcc/5.3.0
-docker build $build_options -t rferraro/cxx-clang:3.8.0 cxx/clang/3.8.0
-docker build $build_options -t rferraro/cxx-clang:3.7.1 cxx/clang/3.7.1
-docker build $build_options -t rferraro/cxx-travis-ci:gcc-5.3.0 cxx/travis-ci/gcc/5.3.0
-docker build $build_options -t rferraro/cxx-travis-ci:clang-3.8.0 cxx/travis-ci/clang/3.8.0
-docker build $build_options -t rferraro/cxx-travis-ci:clang-3.7.1 cxx/travis-ci/clang/3.7.1
+docker build $build_options -t rferraro/cxx-common:debian-stretch ../cxx/common/debian/stretch
+docker build $build_options -t rferraro/cxx-common:debian-sid ../cxx/common/debian/sid
+docker build $build_options -t rferraro/cxx-common:alpine-3.4 ../cxx/common/alpine/3.4
+docker build $build_options -t rferraro/cxx-gcc:5.3.0 ../cxx/gcc/5.3.0
+docker build $build_options -t rferraro/cxx-clang:3.9.0 ../cxx/clang/3.9.0
+docker build $build_options -t rferraro/cxx-clang:3.8.1 ../cxx/clang/3.8.1
+docker build $build_options -t rferraro/cxx-clang:3.8.0 ../cxx/clang/3.8.0
+docker build $build_options -t rferraro/cxx-clang:3.7.1 ../cxx/clang/3.7.1
+docker build $build_options -t rferraro/cxx-travis-ci:gcc-5.3.0 ../cxx/travis-ci/gcc/5.3.0
+docker build $build_options -t rferraro/cxx-travis-ci:clang-3.9.0 ../cxx/travis-ci/clang/3.9.0
+docker build $build_options -t rferraro/cxx-travis-ci:clang-3.8.1 ../cxx/travis-ci/clang/3.8.1
+docker build $build_options -t rferraro/cxx-travis-ci:clang-3.8.0 ../cxx/travis-ci/clang/3.8.0
+docker build $build_options -t rferraro/cxx-travis-ci:clang-3.7.1 ../cxx/travis-ci/clang/3.7.1
 

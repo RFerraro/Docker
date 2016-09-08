@@ -5,16 +5,15 @@ FROM rferraro/cxx-common:debian-stretch
 ENV CC clang
 ENV CXX clang++
 
-# set a specific snapshot of the debian archive, so docker builds are reproducable
-RUN rm /etc/apt/sources.list \
-    && echo "deb http://snapshot.debian.org/archive/debian/20160806T044947Z/ stretch main" >> /etc/apt/sources.list \
-    && echo "deb-src http://snapshot.debian.org/archive/debian/20160806T044947Z/ stretch main" >> /etc/apt/sources.list \
-    && echo "deb http://snapshot.debian.org/archive/debian-security/20160806T023609Z/ stretch/updates main" >> /etc/apt/sources.list \
-    && echo "deb-src http://snapshot.debian.org/archive/debian-security/20160806T023609Z/ stretch/updates main" >> /etc/apt/sources.list
-
-RUN apt-get -o Acquire::Check-Valid-Until=false update && apt-get install -y --no-install-recommends \
+# use a specific snapshot of the debian archive, so docker builds are reproducable
+RUN echo "deb http://snapshot.debian.org/archive/debian/20160806T044947Z/ stretch main" >> /etc/apt/sources.list \
+    && apt-get -o Acquire::Check-Valid-Until=false update && apt-get install -y --no-install-recommends \
         llvm-3.7=1:3.7.1-2 \
         clang-3.7=1:3.7.1-2 \
+        libclang1-3.7=1:3.7.1-2 \
+        libclang-common-3.7-dev=1:3.7.1-2 \
+        libllvm3.7=1:3.7.1-2 \
+        llvm-3.7-runtime=1:3.7.1-2 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.7 999 \
