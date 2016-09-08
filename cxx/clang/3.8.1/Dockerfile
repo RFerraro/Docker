@@ -5,9 +5,13 @@ FROM rferraro/cxx-common:debian-stretch
 ENV CC clang
 ENV CXX clang++
 
-# get specific snapshot of debian archive, so docker builds are reproducable
-RUN deb http://snapshot.debian.org/archive/debian/20160908T103544Z/ stretch main \    
-    && apt-get update && apt-get install -y --no-install-recommends \
+# get a specific snapshot of the debian archive, so docker builds are reproducable
+RUN    deb http://snapshot.debian.org/archive/debian/20160908T103544Z/ stretch main \
+    && deb-src http://snapshot.debian.org/archive/debian/20160908T103544Z/ stretch main \
+    && deb http://snapshot.debian.org/archive/debian-security/20160908T151211Z/ stretch/updates main \
+    && deb-src http://snapshot.debian.org/archive/debian-security/20160908T151211Z/ stretch/updates main
+
+RUN apt-get -o Acquire::Check-Valid-Until=false update && apt-get install -y --no-install-recommends \
         llvm-3.8=1:3.8.1-9 \
         clang-3.8=1:3.8.1-9 \
     && apt-get clean \
