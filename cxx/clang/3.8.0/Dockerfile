@@ -5,8 +5,9 @@ FROM rferraro/cxx-common:debian-stretch
 ENV CC clang
 ENV CXX clang++
 
-# get a specific snapshot of the debian archive, so docker builds are reproducable
-RUN    echo "deb http://snapshot.debian.org/archive/debian/20160806T044947Z/ stretch main" >> /etc/apt/sources.list \
+# set a specific snapshot of the debian archive, so docker builds are reproducable
+RUN rm /etc/apt/sources.list \
+    && echo "deb http://snapshot.debian.org/archive/debian/20160806T044947Z/ stretch main" >> /etc/apt/sources.list \
     && echo "deb-src http://snapshot.debian.org/archive/debian/20160806T044947Z/ stretch main" >> /etc/apt/sources.list \
     && echo "deb http://snapshot.debian.org/archive/debian-security/20160806T023609Z/ stretch/updates main" >> /etc/apt/sources.list \
     && echo "deb-src http://snapshot.debian.org/archive/debian-security/20160806T023609Z/ stretch/updates main" >> /etc/apt/sources.list

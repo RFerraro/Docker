@@ -5,11 +5,10 @@ FROM rferraro/cxx-common:debian-sid
 ENV CC clang
 ENV CXX clang++
 
-# get a specific snapshot of the debian archive, so docker builds are reproducable
-RUN    echo "deb http://snapshot.debian.org/archive/debian/20160908T103544Z/ sid main" >> /etc/apt/sources.list \
-    && echo "deb-src http://snapshot.debian.org/archive/debian/20160908T103544Z/ sid main" >> /etc/apt/sources.list \
-    && echo "deb http://snapshot.debian.org/archive/debian-security/20160908T151211Z/ sid/updates main" >> /etc/apt/sources.list \
-    && echo "deb-src http://snapshot.debian.org/archive/debian-security/20160908T151211Z/ sid/updates main" >> /etc/apt/sources.list
+# set a specific snapshot of the debian archive, so docker builds are reproducable
+RUN rm /etc/apt/sources.list \
+    && echo "deb http://snapshot.debian.org/archive/debian/20160908T103544Z/ sid main" >> /etc/apt/sources.list \
+    && echo "deb-src http://snapshot.debian.org/archive/debian/20160908T103544Z/ sid main" >> /etc/apt/sources.list
 
 RUN apt-get -o Acquire::Check-Valid-Until=false update && apt-get install -y --no-install-recommends \
         llvm-3.9=1:3.9-1 \
