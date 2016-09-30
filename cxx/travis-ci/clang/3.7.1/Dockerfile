@@ -3,7 +3,7 @@
 FROM rferraro/cxx-clang:3.7.1
 
 RUN pip install \
-        conan==0.11.1 \
+        conan==0.12.0 \
     && conan user \
     && conan --version \
     && sed -i.bak '/^path:\s/s#~/.conan/data#/tmp/conan#' ~/.conan/conan.conf \
