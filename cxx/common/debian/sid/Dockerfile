@@ -2,10 +2,7 @@
 
 FROM debian:sid
 
-RUN cat /etc/apt/sources.list
-
-RUN cat /etc/apt/sources.list \
-    && apt-get update \
+RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         ca-certificates \
         python \

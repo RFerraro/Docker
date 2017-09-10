@@ -5,7 +5,8 @@ FROM rferraro/cxx-common:debian-sid
 ENV CC clang
 ENV CXX clang++
 
-RUN apt-get update \
+RUN echo "deb [check-valid-until=no] http://snapshot.debian.org/archive/debian/20161008T044734Z/ sid main" >> /etc/apt/sources.list \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
         llvm-3.7 \
         clang-3.7 \
