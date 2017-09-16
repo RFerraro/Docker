@@ -15,6 +15,4 @@ RUN apk add --no-cache \
     && curl -s https://bootstrap.pypa.io/get-pip.py 2>/dev/null | python - \
     && pip install \
         setuptools \
-        cpp-coveralls
-
-
+        cpp-coveralls==0.3.11
