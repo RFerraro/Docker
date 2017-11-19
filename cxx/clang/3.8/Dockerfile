@@ -1,6 +1,6 @@
 #rferraro/cxx-clang:3.8
 
-FROM rferraro/cxx-common:debian-sid
+FROM rferraro/cxx-common:debian-stretch
 
 ENV CC clang
 ENV CXX clang++
